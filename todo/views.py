@@ -1,3 +1,8 @@
+from django.views.generic import ListView
 from django.shortcuts import render
 
-# Create your views here.
+from todo.models import TodoModel
+
+class TodoList(ListView):
+    template_name = 'list.html'
+    model = TodoModel
