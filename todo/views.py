@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.views.generic import ListView,DetailView,CreateView
+from django.views.generic import ListView,DetailView,CreateView,DeleteView
 from django.shortcuts import render
 
 from todo.models import TodoModel
@@ -19,3 +19,8 @@ class TodoCreate(CreateView):
     fields = ('title','memo','priority','date')
     # reverse_lazyはtodo/urls.py内のname='list'に紐付け、POST成功時にそのViewへ遷移させる。
     success_url = reverse_lazy('list')
+
+class TodoDelete(DeleteView):
+        template_name = 'delete.html'
+        model = TodoModel
+        success_url = reverse_lazy('list')
